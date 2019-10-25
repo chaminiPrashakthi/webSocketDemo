@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var WebSocket = require('ws');
 var http = require('http');
-var hostname = 'http://ec2-54-184-89-72.us-west-2.compute.amazonaws.com';
+var hostname = 'ec2-54-184-89-72.us-west-2.compute.amazonaws.com';
 var port = 8080
 
 http.createServer(function(req, res) {
