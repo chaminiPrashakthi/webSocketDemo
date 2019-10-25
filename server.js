@@ -1,15 +1,13 @@
 const WebSocket = require('ws');
+
+
 const webSocketServer = new WebSocket.Server({ port: 8080 });
 
 webSocketServer.on('connection', (webSocket) => {
     webSocket.on('message', (message) => {
-        console.log('Connection Ok')
+        console.log('Received:', message);
         broadcast(message);
     });
-    webSocketServer.on('close', function() {
-        console.log("Close Connection");
-    })
-
 });
 
 function broadcast(data) {
@@ -19,4 +17,3 @@ function broadcast(data) {
         }
     });
 }
-console.log('test')
