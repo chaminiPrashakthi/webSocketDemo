@@ -12,7 +12,7 @@ http.createServer(function(req, res) {
         res.end();
     });
 }).listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running at ws://${hostname}:${port}/`);
 })
 
 
