@@ -13,6 +13,9 @@ connection.onopen = () => {
 connection.onclose = () => {
     console.error('disconnected');
 };
+connection.onmessage = e => {
+    console.log(e.data)
+}
 
 connection.onerror = (error) => {
     console.error('failed to connect', error);
