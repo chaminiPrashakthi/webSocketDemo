@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var WebSocket = require('ws');
 var http = require('http');
-
+var hostname = 'http://ec2-54-184-89-72.us-west-2.compute.amazonaws.com';
+var portc = 8080
 
 http.createServer(function(req, res) {
     fs.readFile('./index.html', function(err, data) {
@@ -10,7 +11,9 @@ http.createServer(function(req, res) {
         res.write(data);
         res.end();
     });
-}).listen(8080);
+}).listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+})
 
 
 
