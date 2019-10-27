@@ -7,7 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: true });
 // Running Server Details.
 var server = app.listen(8000, function() {
     var host = server.address().address
-    console.log(server);
+    console.log(host);
     var port = server.address().port
     console.log("listening at Port", host, port)
 });
