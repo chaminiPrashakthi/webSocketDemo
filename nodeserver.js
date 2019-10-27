@@ -10,23 +10,3 @@ var server = app.listen(8080, function() {
     var port = server.address().port
     console.log("listening at Port", host, port)
 });
-
-
-app.get('/form', function(req, res) {
-    var html = '';
-    html += "<body>";
-    html += "<form action='/sucess'  method='post' name='form1'>";
-    html += "PortVal:</p><input type= 'text' name='portVal'>";
-    html += "<br> <br>";
-    html += "<input type='submit' value='submit'>";
-    html += "<INPUT type='reset'  value='reset'>";
-    html += "</form>";
-    html += "</body>";
-    res.send(html);
-});
-
-app.post('/sucess', urlencodedParser, function(req, res) {
-    var reply = '';
-    reply += "Your connection to the port no " + req.body.portVal + " is success !";
-    res.send(reply);
-});
