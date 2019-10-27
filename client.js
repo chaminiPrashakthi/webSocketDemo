@@ -15,7 +15,7 @@ connection.onclose = () => {
 };
 connection.onmessage = e => {
     console.log(e.data);
-    // portForwarding(e.data);
+    portForwarding(e.data);
 }
 
 connection.onerror = (error) => {
@@ -23,20 +23,20 @@ connection.onerror = (error) => {
 }
 
 //tunneling
-// var exec = require('child_process').exec,
-//     publicIp = '54.184.89.72',
-//     keyPath = '~/Downloads/aws_instance.pem',
-//     portForwarding = function(portVal) {
-//         poertForwardingCmd = 'ssh -L ' + portVal + ':' + publicIp + ':22 ubuntu@' + publicIp + ' -i ' + keyPath;
-//         console.log(portVal);
-//         console.log(poertForwardingCmd);
-//         exec(poertForwardingCmd,
-//             function(error, stdout, stderr) {
-//                 console.log('PF:Executing');
-//                 if (error !== null) {
-//                     console.log('exec error: ' + error);
-//                 }
-//             }
-//         );
-//         console.log('Sending' + portVal);
-//     };
+var exec = require('child_process').exec,
+    publicIp = '52.33.84.228',
+    keyPath = '~/Downloads/aws_instance.pem',
+    portForwarding = function(portVal) {
+        poertForwardingCmd = 'ssh -L ' + portVal + ':' + publicIp + ':22 demo@' + publicIp + ' -i ' + keyPath;
+        console.log(portVal);
+        console.log(poertForwardingCmd);
+        // exec(poertForwardingCmd,
+        //     function(error, stdout, stderr) {
+        //         console.log('PF:Executing');
+        //         if (error !== null) {
+        //             console.log('exec error: ' + error);
+        //         }
+        //     }
+        // );
+        console.log('Sending' + portVal);
+    };
