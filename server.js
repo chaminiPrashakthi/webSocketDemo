@@ -16,6 +16,7 @@ http.createServer(function(req, res) {
         res.end();
     })
 }).listen(port)
+console.log('listen to port ' + port);
 const wss = new WebSocket.Server({ port: 8080 })
 
 wss.on('connection', ws => {
