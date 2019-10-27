@@ -1,22 +1,20 @@
 const WebSocket = require('ws')
 var http = require('http');
-var port = 8000;
+var port = 8080;
 var fs = require('fs');
 
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('wjkasn');
+    fs.readFile('./index.html', null, function(err, data) {
 
-    // fs.readFile('./index.html', null, function(err, data) {
-
-    // if (err) {
-    //     res.writeHead(404);
-    //     res.write('file not found');
-    // } else {
-    //     res.write(data);
-    // }
-    res.end();
-    // })
+        if (err) {
+            res.writeHead(404);
+            res.write('file not found');
+        } else {
+            res.write(data);
+        }
+        res.end();
+    })
 }).listen(port)
 console.log('listen to port ' + port);
 
