@@ -1,9 +1,16 @@
-const WebSocket = require('ws')
 var http = require("http");
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
+
+// Running Server Details.
+var server = app.listen(8080, function() {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("listening at Port", host, port)
+});
+
 
 app.get('/form', function(req, res) {
     var html = '';
@@ -23,12 +30,3 @@ app.post('/sucess', urlencodedParser, function(req, res) {
     reply += "Your connection to the port no " + req.body.portVal + " is success !";
     res.send(reply);
 });
-
-const wss = new WebSocket.Server({ port: 8080 })
-
-wss.on('connection', ws => {
-    ws.on('message', message => {
-        console.log(`Received message => ${message}`)
-    })
-    ws.send(2334)
-})
