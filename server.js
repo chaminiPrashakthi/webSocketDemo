@@ -6,6 +6,7 @@ var fs = require('fs');
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.end('wjkasn');
+
     // fs.readFile('./index.html', null, function(err, data) {
 
     // if (err) {
