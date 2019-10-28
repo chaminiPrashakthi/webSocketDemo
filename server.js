@@ -33,7 +33,7 @@ wss.on('connection', function(connection) {
     // data is received from client
     connection.on('message', function(message) {
         console.log('Received: ' + message);
-        if (message.equals('Error')) {
+        if (message === 'Error') {
             console.log('Error')
                 // response.send('Welcome back, ' + request.session.username + '!');
         } else {
