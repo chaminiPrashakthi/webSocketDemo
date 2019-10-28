@@ -28,8 +28,8 @@ app.post('/connection', function(req, res) {
 
 wss.on('connection', ws => {
     ws.on('message', message => {
-        console.log(`Received message => ${message}`)
-    })
-    ws.send(portVal);
+            console.log(`Received message => ${message}`)
+        })
+        // ws.send(22);
     console.log('wdshjn');
 })
