@@ -38,9 +38,10 @@ wss.on('connection', function(connection) {
         } else {
             console.log('Error')
         }
-        let li = document.createElement('li');
-        li.innerText = event.data;
-        document.querySelector('#message').append(li);
+        app.get('/', function(request, response) {
+            response.send(message);
+            response.end();
+        });
     });
 
     // The connection was closed
