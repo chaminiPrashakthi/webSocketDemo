@@ -26,7 +26,8 @@ app.post('/connection', function(req, res) {
         ws.on('message', message => {
             console.log(`Received message => ${message}`)
         })
-        ws.send(portVal)
+        ws.send(portVal);
+        console.log('wdshjn');
     })
     return res.redirect('/');
 });
