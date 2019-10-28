@@ -45,7 +45,5 @@ wss.on('connection', function(connection) {
 
 // The connection was closed
 connection.on('close', function() {
-console.log('Closed Connection ');
-});
-
+    console.log('Closed Connection ');
 });
