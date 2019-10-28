@@ -32,9 +32,9 @@ app.post('/sucess', urlencodedParser, function(req, res) {
 
 const wss = new WebSocket.Server({ port: 8080 })
 
-wss.on('connection', ws => {
-    ws.on(function(req, res) {
-        console.log(req.body.portVal)
-    });
-    ws.send(req.body.portVal)
+wswss.on('connection', ws => {
+    ws.on('message', message => {
+        console.log(`Received message => ${message}`)
+    })
+    ws.send('1111')
 })
