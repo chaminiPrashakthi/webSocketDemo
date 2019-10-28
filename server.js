@@ -9,6 +9,8 @@ app.listen(process.env.port || 8001);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var portVal = null;
+const wss = new WebSocket.Server({ port: 8080 })
+
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
@@ -20,14 +22,11 @@ app.post('/connection', function(req, res) {
         "portVal": portVal,
     }
     console.log("DATA is " + JSON.stringify(data));
+    wss.on('connection', ws => {
+        ws.on('message', message => {
+            console.log(`Received message => ${message}`)
+        })
+        ws.send(portVal)
+    })
     return res.redirect('/');
 });
-
-const wss = new WebSocket.Server({ port: 8080 })
-
-wss.on('connection', ws => {
-    ws.on('message', message => {
-        console.log(`Received message => ${message}`)
-    })
-    ws.send(portVal)
-})
