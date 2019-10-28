@@ -14,7 +14,7 @@ connection.onclose = () => {
 };
 connection.onmessage = e => {
     console.log(e.data);
-    portForwarding(e.data, null);
+    portForwarding(e.data);
 }
 
 connection.onerror = (error) => {

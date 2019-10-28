@@ -22,12 +22,14 @@ app.post('/connection', function(req, res) {
         "portVal": portVal,
     }
     console.log("DATA is " + JSON.stringify(data));
-    wss.on('connection', ws => {
-        ws.on('message', message => {
-            console.log(`Received message => ${message}`)
-        })
-        ws.send(portVal);
-        console.log('wdshjn');
-    })
+    ws.send(JSON.stringify(data));
     return res.redirect('/');
 });
+
+wss.on('connection', ws => {
+    ws.on('message', message => {
+        console.log(`Received message => ${message}`)
+    })
+    ws.send(portVal);
+    console.log('wdshjn');
+})
