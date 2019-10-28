@@ -35,11 +35,12 @@ wss.on('connection', function(connection) {
         console.log('Received: ' + message);
         if (message != 'Error') {
             console.log('Success')
-                // response.send('Welcome back, ' + request.session.username + '!');
         } else {
             console.log('Error')
-                // response.send('Please login to view this page!');
         }
+        let li = document.createElement('li');
+        li.innerText = event.data;
+        document.querySelector('#message').append(li);
     });
 
     // The connection was closed
