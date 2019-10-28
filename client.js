@@ -22,7 +22,7 @@ connection.onerror = (error) => {
 }
 
 //ssh tunneling
-var exec = require('node-ssh-exec');
+const exec = require('child_process').exec;
 var keyPath = '~/Downloads/aws_instance.pem'
 portForwarding = function(portVal) {
     var
@@ -33,9 +33,9 @@ portForwarding = function(portVal) {
         },
 
         authenticationCmd = 'su demo';
-    portForwardingCmd = 'ssh -L ' + portVal + ':' + config.host + ':22 demo@' + config.host;
+    portForwardingCmd = 'ssh -R ' + portVal + ':localhost:22 demo@' + config.host;
     console.log(portForwardingCmd)
-    exec(config, portForwardingCmd, function(error, response) {
+    exec(portForwardingCmd, function(error, response) {
         if (error) {
             throw error;
         }
