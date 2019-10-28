@@ -33,21 +33,19 @@ wss.on('connection', function(connection) {
     // data is received from client
     connection.on('message', function(message) {
         console.log('Received: ' + message);
-        app.get('/', function(request, response) {
-            if (message.equals('Error')) {
-                console.log('Error')
-                    // response.send('Welcome back, ' + request.session.username + '!');
-            } else {
-                console.log('Success')
-                    // response.send('Please login to view this page!');
-            }
-            response.end();
-        });
+        if (message.equals('Error')) {
+            console.log('Error')
+                // response.send('Welcome back, ' + request.session.username + '!');
+        } else {
+            console.log('Success')
+                // response.send('Please login to view this page!');
+        }
     });
+});
 
-    // The connection was closed
-    connection.on('close', function() {
-        console.log('Closed Connection ');
-    });
+// The connection was closed
+connection.on('close', function() {
+console.log('Closed Connection ');
+});
 
 });
