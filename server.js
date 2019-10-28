@@ -39,7 +39,7 @@ wss.on('connection', function(connection) {
             console.log('Error')
         }
         app.get('/', function(request, response) {
-            response.send(message);
+            response.send(JSON.stringify(message));
             response.end();
         });
     });
