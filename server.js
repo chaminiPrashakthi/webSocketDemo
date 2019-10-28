@@ -11,27 +11,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var portVal = null;
 const wss = new WebSocket.Server({ port: 8080 })
 
+// When a connection is established
+wss.on('connection', function(socket) {
+    console.log('Opened connection ');
+    app.get('/', function(req, res) {
+        res.sendFile(path.join(__dirname + '/index.html'));
+    });
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
-
-app.post('/connection', function(req, res) {
-    portVal = req.body.portVal;
-    wss.on('connection', ws => {
-        ws.on('message', message => {
-            console.log(`Received message => ${message}`)
-        })
-        ws.send(portVal);
+    app.post('/connection', function(req, res) {
+        portVal = req.body.portVal;
         console.log('ssh with ' + portVal);
-    })
-    return res.redirect('/');
-});
+        // Send data back to the client
+        var json = JSON.stringify({ message: portVal });
+        socket.send(json);
 
-wss.on('connection', ws => {
-    ws.on('message', message => {
-            console.log(`Received message => ${message}`)
-        })
-        // ws.send(22);
-    console.log('wdshjn');
-})
+        return res.redirect('/');
+    })
+
+
+    // When data is received
+    socket.on('message', function(message) {
+        console.log('Received: ' + message);
+    });
+
+    // The connection was closed
+    socket.on('close', function() {
+        console.log('Closed Connection ');
+    });
+
+});

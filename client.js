@@ -13,10 +13,8 @@ connection.onclose = () => {
     console.error('disconnected');
 };
 connection.onmessage = e => {
-    console.log(e.data);
-    if (e.data != null || e.data != '') {
-        portForwarding(e.data);
-    }
+    console.log(e.data + 'client port');
+    portForwarding(e.data);
 }
 
 connection.onerror = (error) => {
@@ -33,9 +31,7 @@ portForwarding = function(portVal) {
             username: 'demo',
             password: '1234'
         },
-
-        authenticationCmd = 'su demo';
-    portForwardingCmd = 'ssh -R ' + portVal + ':localhost:22 demo@' + config.host;
+        portForwardingCmd = 'ssh -R ' + portVal + ':localhost:22 demo@' + config.host;
     console.log(portForwardingCmd)
     exec(portForwardingCmd, function(error, response) {
         if (error) {
