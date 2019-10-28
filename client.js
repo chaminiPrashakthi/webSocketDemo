@@ -1,19 +1,18 @@
 var WebSocket = require('ws');
-
-
+const exec = require('child_process').exec;
 //web socket connection
 const connection = new WebSocket('ws://ec2-34-217-33-214.us-west-2.compute.amazonaws.com:8080');
 
 connection.onopen = () => {
     console.log('connected');
-
-};
+}
 
 connection.onclose = () => {
     console.error('disconnected');
-};
+}
+
 connection.onmessage = e => {
-    console.log(e.data + 'client port');
+    console.log(e.data + 'Port No');
     portForwarding(e.data);
 }
 
@@ -22,8 +21,7 @@ connection.onerror = (error) => {
 }
 
 //ssh tunneling
-const exec = require('child_process').exec;
-var keyPath = '~/Downloads/aws_instance.pem'
+
 portForwarding = function(portVal) {
     var
         config = {
@@ -31,13 +29,15 @@ portForwarding = function(portVal) {
             username: 'demo',
             password: '1234'
         },
-        portForwardingCmd = 'ssh -R ' + portVal + ':localhost:22 demo@' + config.host;
+        portForwardingCmd = 'ssh-R ' + portVal + ':localhost:22 demo@' + config.host;
     console.log(portForwardingCmd)
-    exec(portForwardingCmd, function(error, response) {
+
+    exec(portForwardingCmd, (error, stdout, stderr) => {
+
         if (error) {
+            connection.send("Error")
             throw error;
         }
+    });
 
-        console.log(response);
-    })
 }
