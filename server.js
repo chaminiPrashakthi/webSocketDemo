@@ -33,8 +33,8 @@ app.post('/sucess', urlencodedParser, function(req, res) {
 const wss = new WebSocket.Server({ port: 8080 })
 
 wss.on('connection', ws => {
-    ws.on('message', abd => {
-        console.log(`Received message => ${abc}`)
+    ws.on('message', portVal => {
+        console.log(`Received message => ${portVal}`)
     })
-    ws.send('1111')
+    ws.send(`${portVal}`)
 })
