@@ -1,10 +1,8 @@
-var express = require('express');
-var app = express();
 var WebSocket = require('ws');
 
 
 //web socket connection
-const connection = new WebSocket('ws://ec2-52-33-84-228.us-west-2.compute.amazonaws.com:8080');
+const connection = new WebSocket('ws://ec2-34-217-33-214.us-west-2.compute.amazonaws.com:8080');
 
 connection.onopen = () => {
     console.log('connected');
@@ -16,30 +14,30 @@ connection.onclose = () => {
 };
 connection.onmessage = e => {
     console.log(e.data);
-    portForwarding(e.data);
+    portForwarding(e.data, null);
 }
 
 connection.onerror = (error) => {
     console.error('failed to connect', error);
 }
 
-//tunneling
-var exec = require('child_process').exec,
-    publicIp = '52.33.84.228',
-    keyPath = '~/Downloads/aws_instance.pem',
-    portForwarding = function(portVal) {
-        poertForwardingCmd = 'ssh -L ' + portVal + ':' + publicIp + ':22 ubuntu@' + publicIp + ' -i ' + keyPath;
-        console.log(portVal);
-        console.log(poertForwardingCmd);
-        exec(poertForwardingCmd,
-            function(error) {
-                if (error !== null) {
-                    console.log('exec error: ' + error);
-                } else {
-                    console.log('Port Forwarding:Executing');
-                }
-            }
-        );
-        console.log('Sending' + portVal);
-    };
-s
+//ssh tunneling
+var exec = require('node-ssh-exec');
+portForwarding = function(portVal) {
+    var
+        config = {
+            host: '34.217.33.214',
+            username: 'demo',
+            password: '1234'
+        },
+
+        portForwardingCmd = 'ssh -L ' + portVal + ':' + config.host + ':22 demo@' + config.host;
+    console.log(portForwardingCmd)
+    exec(config, portForwardingCmd, function(error, response) {
+        if (error) {
+            throw error;
+        }
+
+        console.log(response);
+    })
+}
