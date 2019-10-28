@@ -2,20 +2,18 @@
 <html>
 
 <head>
-    <script src="validation.js"></script>
     <meta charset="utf-8">
     <title>Web Socket Demo</title>
 </head>
 
 <body>
-    <form id="submitForm" method="POST" action="/sumbit">
-        <label>Port No:</label>
-        <input type="text" id="portVal" name="portVal">
-        <br><br>
-        <button id="submit" onclick="testClick()">Submit</button>
-        <!-- <ul id="banner"></ul> -->
+
+    <ul id="message"></ul>
+
+    <form action="/connection" method="post">
+        <input type="text" id="portVal" name="portVal"> <br>
+        <button type="submit">Submit</button>
     </form>
 </body>
-
 
 </html>
