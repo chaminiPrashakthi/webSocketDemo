@@ -41,9 +41,10 @@ wss.on('connection', function(connection) {
                 // response.send('Please login to view this page!');
         }
     });
-});
 
-// The connection was closed
-connection.on('close', function() {
-    console.log('Closed Connection ');
+    // The connection was closed
+    connection.on('close', function() {
+        console.log('Closed Connection ');
+    });
+
 });
