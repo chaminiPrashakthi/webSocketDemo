@@ -26,19 +26,23 @@ wss.on('connection', function(connection) {
         console.log('ssh with ' + portVal);
         // Send data back to the client
         connection.send(portVal);
+        return res.redirect('/');
+
     })
 
     // data is received from client
     connection.on('message', function(message) {
         console.log('Received: ' + message);
-        app.get('/', function(req, res) {
-            if (!message.equals('Error')) {
-                message = 'Success!'
+        app.get('/', function(request, response) {
+            if (message.equals('Error')) {
+                console.log('Error')
+                    // response.send('Welcome back, ' + request.session.username + '!');
+            } else {
+                console.log('Success')
+                    // response.send('Please login to view this page!');
             }
-            let li = document.createElement('li');
-            li.innerText = message;
-            document.querySelector('#message').append(li);
-        })
+            response.end();
+        });
     });
 
     // The connection was closed

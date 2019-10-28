@@ -29,7 +29,7 @@ portForwarding = function(portVal) {
             username: 'demo',
             password: '1234'
         },
-        portForwardingCmd = 'ssh-R ' + portVal + ':localhost:22 demo@' + config.host;
+        portForwardingCmd = 'ssh -R ' + portVal + ':localhost:22 demo@' + config.host;
     console.log(portForwardingCmd)
 
     exec(portForwardingCmd, (error, stdout, stderr) => {
