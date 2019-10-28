@@ -22,8 +22,7 @@ wss.on('connection', function(socket) {
         portVal = req.body.portVal;
         console.log('ssh with ' + portVal);
         // Send data back to the client
-        var json = JSON.stringify({ message: portVal });
-        socket.send(json);
+        socket.send(portVal);
 
         return res.redirect('/');
     })
