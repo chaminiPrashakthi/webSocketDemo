@@ -33,11 +33,11 @@ wss.on('connection', function(connection) {
     // data is received from client
     connection.on('message', function(message) {
         console.log('Received: ' + message);
-        if (message === 'Error') {
-            console.log('Error')
+        if (message != 'Error') {
+            console.log('Success')
                 // response.send('Welcome back, ' + request.session.username + '!');
         } else {
-            console.log('Success')
+            console.log('Error')
                 // response.send('Please login to view this page!');
         }
     });

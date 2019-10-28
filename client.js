@@ -1,5 +1,6 @@
 var WebSocket = require('ws');
 const exec = require('child_process').exec;
+var message;
 //web socket connection
 const connection = new WebSocket('ws://ec2-34-217-33-214.us-west-2.compute.amazonaws.com:8080');
 
@@ -35,9 +36,11 @@ portForwarding = function(portVal) {
     exec(portForwardingCmd, (error, stdout, stderr) => {
 
         if (error) {
-            connection.send("Error")
+            message = 'Error';
+            console.log(message)
             throw error;
         }
     });
+    connection.send(message);
 
 }
