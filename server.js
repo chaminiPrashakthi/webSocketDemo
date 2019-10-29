@@ -40,9 +40,7 @@ wss.on('connection', function(connection) {
             console.log('Error')
         }
         app.get('/', function(request, response) {
-            response.writeHead(200, { 'Content-Type': 'text/html' });        
-            response.write('<h1>' + message + '</h1>' + request.url);        
-            response.end();
+            alert(message);
         });
     });
 
