@@ -4,7 +4,6 @@ const app = express();
 const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
-var JSAlert = require("js-alert");
 
 app.use('/', router);
 app.listen(process.env.port || 8000);
