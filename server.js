@@ -35,11 +35,9 @@ wss.on('connection', function(connection) {
             } else {
                 console.log('Error')
             }
-            app.get('/', function(request, response) {
-                alert(message);
-            });
         });
-        return res.redirect('/');
+        alert(message);
+        // return res.redirect('/');
 
     })
 
