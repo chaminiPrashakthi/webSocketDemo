@@ -40,6 +40,8 @@ wss.on('connection', function(connection) {
         }
         app.get('/', function(request, response) {
             let li = document.createElement('li');
+            li.innerText = message;
+            document.querySelector('#message').append(li);
         });
     });
 
