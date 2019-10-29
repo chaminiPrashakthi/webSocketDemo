@@ -3,14 +3,10 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const path = require('path');
-const bodyParser = require('body-parser');
 
 app.use('/', router);
 app.listen(process.env.port || 8000);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+
 
 var portVal = null;
 var text;
