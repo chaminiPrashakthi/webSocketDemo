@@ -35,13 +35,14 @@ wss.on('connection', function(connection) {
         console.log('Received: ' + message);
         if (message != 'Error') {
             console.log('Success')
+            message = 'Success'
         } else {
             console.log('Error')
         }
         app.get('/', function(request, response) {
-            let li = document.createElement('li');
-            li.innerText = message;
-            document.querySelector('#message').append(li);
+            response.writeHead(200, { 'Content-Type': 'text/html' });        
+            response.write('<h1>' + message + '</h1>' + request.url);        
+            response.end();
         });
     });
 
