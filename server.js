@@ -4,6 +4,7 @@ const app = express();
 const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
+const alert = require('alert-node');
 
 app.use('/', router);
 app.listen(process.env.port || 8000);
@@ -36,6 +37,7 @@ wss.on('connection', function(connection) {
                 console.log('Error');
                 text = 'Error';
             }
+            alert('hey!', 'yad');
             res.write("Connection " + text + " with port value " + portVal);
             res.end()
         });
