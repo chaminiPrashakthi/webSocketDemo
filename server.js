@@ -26,7 +26,7 @@ wss.on('connection', function(connection) {
 
     app.post('/', function(req, res) {
         portVal = req.body.portVal;
-        console.log('ssh with ' + );
+        console.log('ssh with ' + portVal);
         // Send data back to the client
         connection.send(portVal);
         // data is received from client
