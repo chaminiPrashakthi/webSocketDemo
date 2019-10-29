@@ -39,7 +39,8 @@ wss.on('connection', function(connection) {
             }
         });
         app.get('/', function(req, res) {
-            res.send('Incorrect Username and/or Password!');
+            res.write('Incorrect Username and/or Password!');
+            res.end()
         })
 
     })
