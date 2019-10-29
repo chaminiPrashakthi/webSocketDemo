@@ -37,7 +37,7 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        res.render('index', { message: 'aryan' });
+        res.render('index.html', { message: 'aryan' });
 
     })
 
