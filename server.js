@@ -38,7 +38,7 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        app.get('/:message', function(req, res) {
+        app.get('/', function(req, res) {
             res.render(path.join(__dirname + '/index.html'), { message: req.params.portVal })
         })
 
