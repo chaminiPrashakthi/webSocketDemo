@@ -26,23 +26,24 @@ wss.on('connection', function(connection) {
         console.log('ssh with ' + portVal);
         // Send data back to the client
         connection.send(portVal);
+        // data is received from client
+        connection.on('message', function(message) {
+            console.log('Received: ' + message);
+            if (message != 'Error') {
+                console.log('Success')
+                message = 'Success'
+            } else {
+                console.log('Error')
+            }
+            app.get('/', function(request, response) {
+                alert(message);
+            });
+        });
         return res.redirect('/');
 
     })
 
-    // data is received from client
-    connection.on('message', function(message) {
-        console.log('Received: ' + message);
-        if (message != 'Error') {
-            console.log('Success')
-            message = 'Success'
-        } else {
-            console.log('Error')
-        }
-        app.get('/', function(request, response) {
-            alert(message);
-        });
-    });
+
 
     // The connection was closed
     connection.on('close', function() {
