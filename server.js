@@ -37,8 +37,9 @@ wss.on('connection', function(connection) {
             } else {
                 console.log('Error')
             }
+            res.write(message);
         });
-        res.write(message);
+
         res.end()
     })
 
