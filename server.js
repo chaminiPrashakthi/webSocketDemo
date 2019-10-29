@@ -9,8 +9,7 @@ app.use('/', router);
 app.listen(process.env.port || 8000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+
 
 var portVal = null;
 var text;
@@ -43,8 +42,6 @@ wss.on('connection', function(connection) {
         res.write("Connection " + text + " with port value " + portVal);
         res.end()
     })
-
-
 
     // The connection was closed
     connection.on('close', function() {
