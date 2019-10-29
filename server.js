@@ -13,7 +13,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 var portVal = null;
-var message = null;
+var text = null;
 const wss = new WebSocket.Server({ port: 8080 })
 
 // connection establish
@@ -34,14 +34,14 @@ wss.on('connection', function(connection) {
             console.log('Received: ' + message);
             if (message != 'Error') {
                 console.log('Success')
-                message = 'Success'
+                text = 'Success'
             } else {
                 console.log('Error');
-                message = message;
+                text = message;
             }
 
         });
-        res.write(message);
+        res.write(text);
         res.end()
     })
 
