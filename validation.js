@@ -1,6 +1,8 @@
-function Connect() {
-    console.log("hellooo");
-    let portVal = document.querySelector('#portVal').value;
-    console.log(portVal)
-
+function onlyNumbers(evt) {
+    var e = window.event || evt;
+    var charCode = e.which || e.keyCode;
+    if (charCode > 47 && charCode < 58)
+        return true;
+    else
+        return false;
 }
