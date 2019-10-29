@@ -36,7 +36,9 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        alert(message);
+        let li = document.createElement('li');
+        li.innerText = event.data;
+        document.querySelector('#message').append(li);
         // return res.redirect('/');
 
     })
