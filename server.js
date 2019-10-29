@@ -33,13 +33,12 @@ wss.on('connection', function(connection) {
         connection.on('message', function(message) {
             if (message != 'Error') {
                 console.log('Success')
-                text = 'Success'
             } else {
                 console.log('Error');
-                text = 'Error';
             }
 
         });
+        text = message;
         res.write("Connection " + text + " with port value " + portVal);
         res.end()
     })
