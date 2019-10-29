@@ -39,8 +39,7 @@ wss.on('connection', function(connection) {
             console.log('Error')
         }
         app.get('/', function(request, response) {
-            response.render("index", { message: message });
-            response.end();
+            let li = document.createElement('li');
         });
     });
 
