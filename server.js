@@ -26,12 +26,11 @@ wss.on('connection', function(connection) {
 
     app.post('/', function(req, res) {
         portVal = req.body.portVal;
-        console.log('ssh with ' + portVal);
+        console.log('ssh with ' + );
         // Send data back to the client
         connection.send(portVal);
         // data is received from client
         connection.on('message', function(message) {
-            console.log('Received: ' + message);
             if (message != 'Error') {
                 console.log('Success')
                 text = 'Success'
@@ -41,7 +40,7 @@ wss.on('connection', function(connection) {
             }
 
         });
-        res.write(text);
+        res.write("Connection " + text + " with port value " + portVal);
         res.end()
     })
 
