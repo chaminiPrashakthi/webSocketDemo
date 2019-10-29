@@ -23,7 +23,7 @@ wss.on('connection', function(connection) {
         res.sendFile(path.join(__dirname + '/index.html'));
     });
 
-    app.post('/connection', function(req, res) {
+    app.post('/connection/:message', function(req, res) {
         portVal = req.body.portVal;
         console.log('ssh with ' + portVal);
         // Send data back to the client
