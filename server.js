@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 
 app.use('/', router);
 app.listen(process.env.port || 8000);
-// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
@@ -37,10 +36,10 @@ wss.on('connection', function(connection) {
                 console.log('Error');
                 text = 'Error';
             }
-
+            res.write("Connection " + text + " with port value " + portVal);
+            res.end()
         });
-        res.write("Connection " + text + " with port value " + portVal);
-        res.end()
+
     })
 
     // The connection was closed
