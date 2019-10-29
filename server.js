@@ -38,7 +38,9 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        res.render(path.join(__dirname + '/index.html'), { message: 'aryan' });
+        app.get('/:message', function(req, res) {
+            res.render('index', { message: req.params.portVal })
+        })
 
     })
 
