@@ -40,7 +40,7 @@ wss.on('connection', function(connection) {
         }
         app.get('/', function(request, response) {
             response.send(JSON.stringify(message));
-            response.end();
+            response.end(JSON.stringify(message));
         });
     });
 
