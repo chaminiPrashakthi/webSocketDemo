@@ -4,7 +4,7 @@ const app = express();
 const router = express.Router();
 const path = require('path');
 const bodyParser = require('body-parser');
-var popup = require('popups');
+var JSAlert = require("js-alert");
 
 app.use('/', router);
 app.listen(process.env.port || 8000);
@@ -37,9 +37,7 @@ wss.on('connection', function(connection) {
                 console.log('Error');
                 text = 'Error';
             }
-            popup.alert({
-                content: 'Hello!'
-            });
+            JSAlert.alert("This is an alert.");
             // res.write("Connection " + text + " with port value " + portVal);
             // res.end()
         });
