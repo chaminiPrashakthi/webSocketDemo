@@ -31,6 +31,7 @@ wss.on('connection', function(connection) {
         connection.send(portVal);
         // data is received from client
         connection.on('message', function(message) {
+            text = message;
             if (message != 'Error') {
                 console.log('Success')
             } else {
@@ -38,7 +39,6 @@ wss.on('connection', function(connection) {
             }
 
         });
-        text = message;
         res.write("Connection " + text + " with port value " + portVal);
         res.end()
     })
