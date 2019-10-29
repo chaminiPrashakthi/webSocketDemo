@@ -36,8 +36,7 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        res.append(message, message)
-        return res.redirect('/');
+        res.render('index', { message: 'aryan' });
 
     })
 
