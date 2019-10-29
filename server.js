@@ -39,8 +39,8 @@ wss.on('connection', function(connection) {
             console.log('Error')
         }
         app.get('/', function(request, response) {
-            response.send(JSON.stringify(message));
-            response.end(JSON.stringify(message));
+            response.render("index", { message: message });
+            response.end();
         });
     });
 
