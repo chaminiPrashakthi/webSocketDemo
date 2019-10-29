@@ -38,7 +38,7 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        res.render('./index.html', { message: 'aryan' });
+        res.render(path.join(__dirname + '/index.html'), { message: 'aryan' });
 
     })
 
