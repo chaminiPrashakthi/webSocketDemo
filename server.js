@@ -37,7 +37,7 @@ wss.on('connection', function(connection) {
                 text = 'Success'
             } else {
                 console.log('Error');
-                text = message;
+                text = 'Error';
             }
 
         });
