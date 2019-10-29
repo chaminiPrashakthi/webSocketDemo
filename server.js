@@ -37,9 +37,8 @@ wss.on('connection', function(connection) {
                 console.log('Error');
                 text = 'Error';
             }
-            JSAlert.alert("This is an alert.");
-            // res.write("Connection " + text + " with port value " + portVal);
-            // res.end()
+            res.write("Connection " + text + " with port value " + portVal);
+            res.end()
         });
 
     })
