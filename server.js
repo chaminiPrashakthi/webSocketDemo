@@ -23,7 +23,7 @@ wss.on('connection', function(connection) {
         res.sendFile(path.join(__dirname + '/index.html'));
     });
 
-    app.post('/connection', function(req, res) {
+    app.post('/', function(req, res) {
         portVal = req.body.portVal;
         console.log('ssh with ' + portVal);
         // Send data back to the client
@@ -38,7 +38,7 @@ wss.on('connection', function(connection) {
                 console.log('Error')
             }
         });
-        res.write('Incorrect Username and/or Password!');
+        res.write(message);
         res.end()
     })
 
