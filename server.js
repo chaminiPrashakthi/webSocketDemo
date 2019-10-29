@@ -3,11 +3,14 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const path = require('path');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 app.use('/', router);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.listen(process.env.port || 8000);
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
 
 var portVal = null;
 var text;
@@ -17,7 +20,7 @@ const wss = new WebSocket.Server({ port: 8080 })
 wss.on('connection', function(connection) {
     console.log('Opened connection ');
 
-    app.get('/connection', function(req, res) {
+    app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname + '/index.html'));
     });
 
