@@ -9,6 +9,7 @@ app.use('/', router);
 app.listen(process.env.port || 8000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.set('view engine', 'html');
 
 var portVal = null;
 const wss = new WebSocket.Server({ port: 8080 })
