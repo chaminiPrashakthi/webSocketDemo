@@ -38,8 +38,9 @@ wss.on('connection', function(connection) {
                 text = 'Error';
             }
             res.write("Connection " + text + " with port value " + portVal);
-            res.end()
+
         });
+        res.end()
 
     })
 
