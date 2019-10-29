@@ -39,7 +39,7 @@ wss.on('connection', function(connection) {
             }
         });
         app.get('/:message', function(req, res) {
-            res.render('index', { message: req.params.portVal })
+            res.render(path.join(__dirname + '/index.html'), { message: req.params.portVal })
         })
 
     })
