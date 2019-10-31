@@ -1,8 +1,9 @@
 var WebSocket = require('ws');
 const exec = require('child_process').exec;
+
 var message = null;
 //web socket connection
-const connection = new WebSocket('ws://ec2-34-217-33-214.us-west-2.compute.amazonaws.com:8080');
+const connection = new WebSocket('15.206.88.74:8080');
 
 connection.onopen = () => {
     console.log('connected');
@@ -26,7 +27,7 @@ connection.onerror = (error) => {
 portForwarding = function(portVal) {
     var
         config = {
-            host: '34.217.33.214',
+            host: '15.206.88.74',
             username: 'demo',
             password: '1234'
         },
